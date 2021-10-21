@@ -1,7 +1,7 @@
 package com.reneeter.mishuttersound
 
 import de.robv.android.xposed.IXposedHookLoadPackage
-import de.robv.android.xposed.XC_MethodHook
+import de.robv.android.xposed.XC_MethodReplacement
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -12,9 +12,9 @@ class Hook : IXposedHookLoadPackage {
                 "OooO0O0.OooO0o0.OooO00o.OooO0OO",
                 lpparam.classLoader,
                 "oo0o0Oo",
-                object : XC_MethodHook() {
-                    override fun beforeHookedMethod(param: MethodHookParam?) {
-                        param?.result = true
+                object : XC_MethodReplacement() {
+                    override fun replaceHookedMethod(param: MethodHookParam?): Any {
+                        return true
                     }
                 }
             )
